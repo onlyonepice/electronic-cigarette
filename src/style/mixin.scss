@@ -1,0 +1,72 @@
+
+/**
+  $size: 字体尺寸-default: 12px
+  $weight: 字体粗细-default: 400
+  $color: 颜色-default: rgba(0,0,0,.4)
+  $lh: 行高-default: 20px
+**/
+@mixin font($size: 12px,$weight: 400,$color: rgba(0,0,0,.4),$lh: 20px ) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  line-height: $lh;
+}
+/**
+  盒样式
+**/
+@mixin box( $padding: 'none', $margin: 'none', $background: 'none', $borderRadius: 'none', $border: 'none', $boxShadow: 'none'){
+  box-sizing: border-box;
+  padding: $padding;
+  margin: $margin;
+  background: $background;
+  border-radius: $borderRadius;
+  border: $border;
+  box-shadow: $boxShadow;
+}
+// 设置 flex 布局
+@mixin flex( $align: center, $justify: center, $wrap: wrap){
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+}
+// 设置 margin
+@mixin margin( $top: 0, $right: 0, $bottom: 0, $left: 0 ){
+  margin: $top $right $bottom $left;
+}
+// 设置 padding
+@mixin padding( $top: 0, $right: 0, $bottom: 0, $left: 0 ){
+  padding: $top $right $bottom $left;
+}
+// 设置宽高
+@mixin widthAndHeight( $width: 100%, $height: 100% ){
+  width: $width;
+  height: $height;
+}
+// 绝对定位
+@mixin absoluteTop( $zIndex: 1, $top: none, $right: none, $bottom: none, $left: none  ){
+  position: absolute;
+  z-index: $zIndex;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+// 相对定位
+@mixin relative( $zIndex: 1, $top: none, $right: none, $bottom: none, $left: none  ){
+  position: relative;
+  z-index: $zIndex;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+// 固定定位
+@mixin fixed( $zIndex: 1, $top: none, $right: none, $bottom: none, $left: none  ){
+  position: fixed;
+  z-index: $zIndex;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
