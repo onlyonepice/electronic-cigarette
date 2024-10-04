@@ -5,7 +5,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Video',
     component: () => import("@/views/video/enter.vue"),
     meta: {
-      title: '电子烟视频'
+      title: '开业狂欢活动详情'
     }
   },
 ]
