@@ -10,7 +10,6 @@ import {
   PureHttpRequestConfig,
   defaultProjectConfig
 } from "./types.d";
-import { encrypt } from "@guoweisheng/static/src/librarys/jsencrypt";
 import { showToast} from 'vant';
 import { stringify } from "qs";
 // import { formatToken } from "@/utils/auth";
@@ -76,15 +75,6 @@ class PureHttp {
         config.headers["tenant"] = defaultProjectConfig.clientId;
         // 定义请求链接
         config.url = `${VITE_GLOB_API_URL}${config.url}`;
-        // 添加默认token
-        config.headers["Authorization"] =
-          "Basic " +
-          window.btoa(
-            defaultProjectConfig.clientId +
-              ":" +
-              defaultProjectConfig.clientSecret
-          );
-          config.headers["sign"] = encrypt(config);
         return whiteList.some(v => config.url.indexOf(v) > -1)
           ? config
           : new Promise(resolve => {

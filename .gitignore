@@ -1,0 +1,30 @@
+.DS_Store
+node_modules
+/dist
+
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-lock.yaml*
+npm-lock.yaml*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# lock
+pnpm-lock.yaml
+package-lock.json
+
+# eslint
+.eslintcache
+tsconfig.tsbuildinfo
+test.html
