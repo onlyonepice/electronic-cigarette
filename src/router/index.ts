@@ -3,7 +3,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/video',
     name: 'Video',
-    component: () => import("@/views/video/enter.vue"),
+    component: () => import("@/views/video/index.vue"),
     meta: {
       title: '开业狂欢活动详情'
     }
