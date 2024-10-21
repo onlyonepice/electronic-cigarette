@@ -1,78 +1,179 @@
 <template>
-  <div class="video">
-    <video
-      id="my-video"
-      class="video-js"
-      controls
-      preload="auto"
-      poster=""
-      autoplay
-      muted
-    >
+  <div class="invite">
+    <div class="invite-head">LOST MARY</div>
+    <div class="invite-title">
+      <h1>MT15000 TURBO</h1>
+      <h2>Double the Power,Go Turbo!</h2>
+    </div>
+    <video class="invite-video" controls preload="auto" poster="" autoplay muted>
       <source :src="Video" type="video/mp4" />
     </video>
-    <div class="text-description">
-      <h1>Grand Opening Celebration Event Details</h1>
-      <span>To celebrate the grand opening of the cloudPuff website, we’re offering an exclusive deal you won’t want to miss! For the entire first month, enjoy 50% off all e-cigarette products, plus free shipping on every order.
-      </span>
-      <span>But that’s not all! We’re also launching our Affiliate Program. Become one of our affiliates and earn up to 20% commission on every successful referral, helping you generate extra income with ease.
-      </span>
-      <h2>Event Highlights:</h2>
-      <p>• 50% off sitewide – unbeatable prices for top-quality products!</p>
-      <p>• Free shipping nationwide – no extra costs!</p>
-      <p>• Become an affiliate and enjoy 20% commission on every sale!</p>
-      <h2>Event Duration: </h2>
-      <p>Starting now and lasting for the first month of our opening</p>
-      <h2>Affiliate Commission Details: </h2>
-      <p>Sign up today and start earning with every sale!</p>
+    <div class="invite-special-title">EXCLUSIVE DEAL</div>
+    <div class="invite-special-text">
+      <p>Grand Opening Celebration Event Details</p>
+      <span>To celebrate the grand opening of the cloudPuff website, we’re offering an exclusive deal you won’t want to miss! For the entire first month, enjoy 50% off all e-cigarette products, plus free shipping on every order. But that’s not all! We’re also launching our Affiliate Program. Become one of our affiliates and earn up to 20% commission on every successful referral, helping you generate extra income with ease.</span>
+      <p>Event Highlights:</p>
+      <span point>50% off sitewide – unbeatable prices for top-quality products!</span>
+      <span point>Free shipping nationwide – no extra costs!</span>
+      <span point>Become an affiliate and enjoy 20% commission on every sale!</span>
+      <span>To celebrate the grand opening of the cloudPuff website, we’re offering an exclusive deal you won’t want to miss! For the entire first month, enjoy 50% off all e-cigarette products, plus free shipping on every order. But that’s not all! We’re also launching our Affiliate Program. Become one of our affiliates and earn up to 20% commission on every successful referral, helping you generate extra income with ease.</span>
+      <p>Event Duration:</p>
+      <span>Starting now and lasting for the first month of our opening Affiliate Commission Details: Sign up today and start earning with every sale!</span>
     </div>
-    <van-floating-bubble icon="chat" @click="onSubmit" />
-    <img class="page-bottom" :src="PageBottom" alt="">
+    <div class="invite-special-title" width="29">RANKING LIST</div>
+    <div class="invite-ranking">
+      <div class="invite-ranking-head">
+        <p>Serial Number</p>
+        <p>Profile Picture</p>
+        <p>Winning Amount</p>
+      </div>
+      <div v-for="item in 5" :key="item" class="invite-ranking-body">
+        <p>{{ item }}</p>
+        <img src="" alt="">
+        <p>$100.00</p>
+      </div>
+    </div>
+    <div class="invite-special-title" width="26">Contact Us</div>
+    <div class="invite-connectUs">
+      <div>Phone: 12313</div>
+      <div>Address: 1231231</div>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref, Ref } from "vue";
 import Video from "@/assets/video/video.mp4";
-import PageBottom from "@/assets/img/page-bottom.png";
-const username = ref('');
-const password = ref('');
-const onSubmit = (values) => {
-  console.log('submit', values);
-};
-console.log("1");
 </script>
 <style lang="scss" scoped>
+@import "@/style/mixin.scss";
 
-.video-js {
-  width: 100vw;
-  height: 42rem;
+.invite {
+  background: #181819;
+  width: 100%;
+  padding: 7rem 0;
 }
-.text-description {
-  padding: 0 2rem;
-  margin: 2rem 0;
+.invite-head {
+  width: 67.4rem;
+  height: 6.6rem;
+  background: linear-gradient( 90deg, #FF4545 0%, #7935EE 100%);
+  margin: 0 auto;
+  font-family: PangMenZhengDao, PangMenZhengDao;
+  padding: 1rem 0 0.8rem 2.4rem;
+  @include font(4rem, 700, #FFFFFF, 4rem);
+}
+.invite-title {
+  margin: 3.6rem auto 4.6rem;
+  text-align: center;
   h1 {
-    font-weight: 600;
-    font-size: 3rem;
-    margin-bottom: 1.2rem;
-  }
-  span {
-    font-size: 2.4rem;
-    line-height: 2.8rem;
-  }
-  p {
-    font-size: 2.4rem;
-    line-height: 2.8rem;
-    margin-left: 1.2rem;
+    @include font(6rem, 700, #FFFFFF, 5.2rem);
   }
   h2 {
-    font-weight: 600;
-    font-size: 2.4rem;
-    line-height: 3rem;
-    margin: 1.2rem 0;
+    @include font(2.6rem, 500, #FFFFFF, 5.2rem);
   }
 }
-.page-bottom {
-  width: 100vw;
-  object-fit: contain;
+.invite-video {
+  @include widthAndHeight(100%, 49.2rem);
+}
+.invite-special-title {
+  @include widthAndHeight(35.8rem, 4rem);
+  @include relative();
+  margin: 7.8rem auto 6.6rem;
+  @include font(3.6rem, 700, #ffffff, 3.6rem);
+  &::before {
+    @include widthAndHeight(2.4rem, 2.8rem);
+    border: 0.6rem solid #7D30E9;
+    content: "";
+    display: inline-block;
+    @include absolute(1, none, none, 0, -3rem);
+  }
+  &::after {
+    @include widthAndHeight(2.4rem, 2.8rem);
+    border: 0.6rem solid #7D30E9;
+    content: "";
+    display: inline-block;
+    @include absolute(1, 0, 3rem, none, none);
+  }
+}
+.invite-special-title[width="29"] {
+  width: 29rem;
+}
+.invite-special-title[width="26"] {
+  width: 26rem;
+}
+.invite-special-text {
+  padding: 6rem 3rem;
+  width: 67.4rem;
+  margin: 0 auto;
+  background: #000000;
+  p {
+    @include font(2.8rem, 400, #ffffff, 4.4rem);
+    margin-bottom: 1.4rem;
+  }
+  span {
+    @include font(2.6rem, 200, rgba(255,255,255,0.6), 4.8rem);
+    @include relative();
+    padding-left: 2rem;
+    display: block;
+  }
+  span[point] {
+    &::before {
+      @include widthAndHeight(1rem, 1rem);
+      content: "";
+      display: inline-block;
+      background-color: #7D30E9;
+      border-radius: 100%;
+      @include absolute(1, 1.8rem, none, none, 0);
+    }
+  }
+}
+.invite-ranking {
+  width: 67.6rem;
+  margin: 0 auto;
+  background: #000000;
+  padding-bottom: 5.6rem;
+  .invite-ranking-head {
+    background: linear-gradient( 90deg, #FF4545 0%, #7935EE 100%);
+    border-radius: 2rem 2rem 0px 0px;
+    @include flex(center, space-between, nowrap);
+    padding: 0.2rem 3.8rem;
+    @include font(2.4rem, 400, #FFFFFF, 4.8rem);
+  }
+  .invite-ranking-body {
+    @include flex(center, space-between, nowrap);
+    text-align: center;
+    height: 11rem;
+    margin-top: 4.8rem;
+    padding-bottom: 4.8rem;
+    padding: 0 3.8rem;
+    p:nth-of-type(1){
+      width: 16rem;
+      @include font(2.4rem, 400, #FFFFFF, 4.8rem);
+    }
+    img {
+      @include widthAndHeight(11rem, 11rem);
+      border-radius: 100%;
+    }
+    p:nth-of-type(2) {
+      width: 18.4rem;
+      @include font(2.8rem, 400, #FF4545, 4.8rem);
+    }
+  }
+}
+.invite-connectUs {
+  padding: 7.6rem 4.2rem;
+  background-color: #000000;
+  width: 67.4rem;
+  margin: 0 auto;
+  div {
+    @include widthAndHeight(59rem, 10rem);
+    background: #EEE6FD;
+    border-radius: 2rem;
+    padding: 2.6rem 3.2rem;
+    @include font(2.6rem, 400, #000000, 4.8rem);
+    margin: 0 auto;
+    &:nth-of-type(1) {
+      margin-bottom: 4.8rem;
+    }
+  }
 }
 </style>

@@ -44,7 +44,7 @@
   height: $height;
 }
 // 绝对定位
-@mixin absoluteTop( $zIndex: 1, $top: none, $right: none, $bottom: none, $left: none  ){
+@mixin absolute( $zIndex: 1, $top: none, $right: none, $bottom: none, $left: none  ){
   position: absolute;
   z-index: $zIndex;
   top: $top;
