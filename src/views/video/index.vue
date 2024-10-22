@@ -8,6 +8,10 @@
     <video class="invite-video" controls preload="auto" poster="" autoplay muted>
       <source :src="Video" type="video/mp4" />
     </video>
+    <div class="invite-option">
+      <div @click="onUrl()">Smooth Mode</div>
+      <div @click="onCode()">Turbo Mode</div>
+    </div>
     <div class="invite-special-title">EXCLUSIVE DEAL</div>
     <div class="invite-special-text">
       <p>Grand Opening Celebration Event Details</p>
@@ -35,14 +39,30 @@
     </div>
     <div class="invite-special-title" width="26">Contact Us</div>
     <div class="invite-connectUs">
-      <div>Phone: 12313</div>
-      <div>Address: 1231231</div>
+      <div>Phone: </div>
+      <div>Address: </div>
     </div>
   </div>
+  <Popup v-model:show="showCenter" round :style="{ padding: '64px' }" >
+    <div class="invite-code">
+      <h2>请扫描二维码</h2>
+      <img src="@/assets/img/connect-us.png" alt=""/>
+    </div>
+  </Popup>
 </template>
 <script lang="ts" setup>
 import { ref, Ref } from "vue";
 import Video from "@/assets/video/video.mp4";
+import ConnectLeft from "@/assets/img/connect-left.png";
+import ConnectRight from "@/assets/img/connect-right.png";
+import { Popup } from 'vant';
+const showCenter: Ref<boolean> = ref(false); // 弹窗
+const onUrl = () => {
+  window.open("https://www.cloudpuff.org", "externalWindow");
+};
+const onCode = () => {
+  showCenter.value = true;
+};
 </script>
 <style lang="scss" scoped>
 @import "@/style/mixin.scss";
@@ -74,8 +94,27 @@ import Video from "@/assets/video/video.mp4";
 .invite-video {
   @include widthAndHeight(100%, 49.2rem);
 }
+.invite-option {
+  width: 67.4rem;
+  @include flex(center, space-between, nowrap);
+  margin: 0 auto;
+  div {
+    @include widthAndHeight(31rem, 23.6rem);
+    @include flex(center, center, nowrap);
+  }
+  div:nth-of-type(1) {
+    background-image: url("@/assets/img/connect-left.png");
+    background-size: 100% 100%;
+    @include font(3.6rem, 400, #000000, 3.6rem);
+  }
+  div:nth-of-type(2) {
+    background-image: url("@/assets/img/connect-right.png");
+    background-size: 100% 100%;
+    @include font(3.6rem, 400, #FFFFFF, 3.6rem);
+  }
+}
 .invite-special-title {
-  @include widthAndHeight(35.8rem, 4rem);
+  @include widthAndHeight(30.8rem, 4rem);
   @include relative();
   margin: 7.8rem auto 6.6rem;
   @include font(3.6rem, 700, #ffffff, 3.6rem);
@@ -85,20 +124,30 @@ import Video from "@/assets/video/video.mp4";
     content: "";
     display: inline-block;
     @include absolute(1, none, none, 0, -3rem);
+    border-right: 2px solid rgba(255, 255, 255, 0);
+    border-top: 2px solid rgba(255, 255, 255, 0);
   }
   &::after {
     @include widthAndHeight(2.4rem, 2.8rem);
     border: 0.6rem solid #7D30E9;
     content: "";
     display: inline-block;
-    @include absolute(1, 0, 3rem, none, none);
+    @include absolute(1, 0, -2rem, none, none);
+    border-left: 2px solid rgba(255, 255, 255, 0);
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
   }
 }
 .invite-special-title[width="29"] {
-  width: 29rem;
+  width: 25rem;
+  &::after {
+    @include absolute(1, 0, -3.6srem, none, none);
+  }
 }
 .invite-special-title[width="26"] {
-  width: 26rem;
+  width: 20rem;
+  &::after {
+    @include absolute(1, 0, -1.6rem, none, none);
+  }
 }
 .invite-special-text {
   padding: 6rem 3rem;
@@ -174,6 +223,17 @@ import Video from "@/assets/video/video.mp4";
     &:nth-of-type(1) {
       margin-bottom: 4.8rem;
     }
+  }
+}
+.invite-code {
+  text-align: center;
+  h2 {
+    font-size: 4rem;
+    font-weight: 600;
+  }
+  img {
+    @include widthAndHeight(30rem, 30rem);
+    margin-top: 3rem;
   }
 }
 </style>
